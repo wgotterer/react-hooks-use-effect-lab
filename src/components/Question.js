@@ -4,13 +4,16 @@ function Question({ question, onAnswered }) {
   const [timeRemaining, setTimeRemaining] = useState(10);
 
   // add useEffect code
-  useEffect(() => {
-    if(timeRemaining > 0){
-      setTimeout(()=> setTimeRemaining(timeRemaining-1),1000)
+  useEffect(() => { 
+    
+    if(timeRemaining === 0){ 
+      onAnswered(false)
+      setTimeRemaining(10)
     } 
-    // return () => {
-    //   cleanup
-    // }
+    let timerID = setTimeout(()=> setTimeRemaining(timeRemaining-1),1000)
+    return () => {
+      clearTimeout(timerID)
+    }
   })
 
   function handleAnswer(isCorrect) {

@@ -16,7 +16,7 @@ function App() {
     }
     if (correct) {
       setScore((score) => score + 1);
-    } onAnswered(false)
+    } 
   }
 
   return (
